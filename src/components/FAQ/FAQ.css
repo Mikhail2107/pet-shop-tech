@@ -1,0 +1,15 @@
+.faq-container{
+    width: 100%;
+    height: auto;
+    background-color: #484283;
+    color:#FFFFFF; 
+}
+.faq-title{
+}
+.faq-content {
+    list-style: none;
+}
+.faq-item{
+    border-top:1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+}

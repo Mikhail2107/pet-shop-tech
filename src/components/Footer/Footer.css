@@ -1,0 +1,18 @@
+
+.footer-container {    
+    width: 100%;
+    margin: 0;    
+    background-color: #444B58;
+}
+.footer-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 100px;
+}
+.footer-menu {
+    display: flex;
+    list-style: none;
+}
+.footer-item {
+    margin: 0;
+}
