@@ -1,21 +1,15 @@
-// import { useState } from 'react'
-import Catalog from '../Catalog/Catalog';
-import SearchInput from '../SearchInput/SearchInput';
-import HomeTop from '../widget/HomeTop';
-import FAQ from '../FAQ/FAQ'
-import Footer from '../Footer/Footer';
-
+// import Home from '../../pages/Home'
+// import OneProduct from '../../pages/OneProduct'
+import MyCart from '../../pages/MyCart'
 import './App.css'
 
 function App() {
   
   return (
     <>
-      <HomeTop />    
-      <SearchInput />
-      <Catalog />  
-      <FAQ />
-      <Footer />
+      {/* <Home />  */}
+      {/* <OneProduct /> */}
+      <MyCart />
     </>
   )
 }

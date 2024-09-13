@@ -1,18 +1,38 @@
 
 .footer-container {    
-    width: 100%;
+    max-width: 100%;
     margin: 0;    
     background-color: #444B58;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
 }
 .footer-box {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 0 100px;
+    padding: 10px 100px;
+
 }
-.footer-menu {
+.footer-list {
     display: flex;
+    flex-direction:row;
     list-style: none;
-}
-.footer-item {
     margin: 0;
+    padding: 0;
+    justify-content: end;
+    align-items: center;
+}
+.footer-item{
+    padding: 10px;
+    text-decoration: none;
+    color: #FFFFFF;    
+}
+.footer-link {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+.footer-link:hover {
+    color: gray;
 }

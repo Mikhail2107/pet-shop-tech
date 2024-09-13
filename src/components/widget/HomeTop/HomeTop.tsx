@@ -1,5 +1,5 @@
-import Header from "../Header/Header"
-import Sale from "../Sale/Sale"
+import Header from "../../Header/Header"
+import Sale from "../../Sale/Sale"
 
 import './HomeTop.css'
 

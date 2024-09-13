@@ -3,3 +3,9 @@ body {
     display: flex; 
     flex-direction: column; 
 }
+.logo-company {
+    background: url("../../assets/Logo.svg") no-repeat;
+    margin: 0px;
+    width: 164px;
+    height: 40px;
+}

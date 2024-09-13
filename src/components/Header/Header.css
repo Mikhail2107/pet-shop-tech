@@ -1,16 +1,16 @@
 .header-menu{    
+    max-width: 100%;
     display: grid;
     grid-template-columns:1fr 1fr;
-    margin: 0 100px;
-    padding: 10px 0;
-    justify-content:space-around;
+    padding: 10px 100px;
+    background-color: #484283;  
 }
-.logo-company {
+/* .logo-company {
     background: url("../../assets/Logo.svg") no-repeat;
     margin: 0px;
     width: 164px;
     height: 40px;
-}
+} */
 .header-list {
     display: flex;
     flex-direction:row;

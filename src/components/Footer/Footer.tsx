@@ -9,11 +9,11 @@ function Footer (){
         <footer className="footer-container">
             <div className="footer-box">
                 <div className="logo-company"></div>
-            <ul className="footer-menu">
-                <li className="header-item">
-                    <a className="header-link" href="#catalog">Catalog</a>
+            <ul className="footer-list">
+                <li className="footer-item">
+                    <a className="footer-link" href="#catalog">Catalog</a>
                 </li>
-                <li className="header-item">
+                <li className="footer-item">
                     <a className="header-link" href="#faq">FAQ</a>
                 </li>
             </ul>

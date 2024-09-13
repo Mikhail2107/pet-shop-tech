@@ -10,6 +10,21 @@
     list-style: none;
 }
 .faq-item{
+    margin-top: -1px;
     border-top:1px solid #FFFFFF;
     border-bottom: 1px solid #FFFFFF;
+}
+.faq-question {
+
+}
+.faq-button-show {
+    width: 20px;
+    height: 20px;
+    background: url("../../assets/Button.svg") 50% 50% no-repeat;
+}
+.faq-button-show.button-show {
+    transform: rotate(45deg);
+}
+.faq-answer {
+
 }
