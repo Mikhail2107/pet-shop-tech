@@ -8,11 +8,16 @@
     /* flex-direction: row; */
     justify-content: center;
     align-items: center;
+    margin: 50px;
+}
+.cart-box {
+    border: 1px solid gray;
+    border-radius: 4px; 
+    display: flex;
 }
 .cart-list {
     list-style: none;    
-    border: 1px solid gray;
-    border-radius: 4px;
+    
     margin: 20px;
     padding: 0;
 }
@@ -85,6 +90,14 @@
     background-color: inherit;
     border: none;
     color: #B2B5BB;
-    padding-left: 50px;
+    margin-left: 50px;
     cursor: pointer;
+}
+
+.button-cart {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    background: url('../../../assets/Vector.svg') 50% 50% no-repeat;
+    background-color: #F14F4F;
 }
