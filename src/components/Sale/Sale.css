@@ -26,4 +26,8 @@
     border-radius: 4px;
     color: #FFFFFF ;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+.sale-buy:hover {
+  background-color: #8C2828;
 }

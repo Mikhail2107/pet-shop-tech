@@ -33,9 +33,7 @@ function FAQ(){
                         <p className='faq-answer'></p>
                     </li>
                 </ul>
-                </div>
-                
-                
+                </div>   
             </div>
         </>
     )

@@ -1,4 +1,6 @@
 import './Sale.css'
+
+
 function Sale(){
 
     return (
@@ -12,7 +14,10 @@ function Sale(){
                     We sell smartphones, laptops, clothes, 
                     shoes and many other products at low prices
                 </p>
-                <button className="sale-buy">Go to shopping</button>
+                <a href="#catalog">
+                  <button className="sale-buy">Go to shopping</button>   
+                </a>
+                
             </div>
         </>
     )

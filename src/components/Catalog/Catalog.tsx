@@ -7,18 +7,22 @@ function Catalog() {
 
     return (
         <>
-        <div className="catalog-container" id="catalog">
-            <h1 className="catalog-title">Catalog</h1>
-            <SearchInput />
-            <ul className="product-list">
-                <li className="product-item"><CatalogItem /></li>
-                <li className="product-item"><CatalogItem /></li>
-                <li className="product-item"><CatalogItem /></li>
-                <li className="product-item"><CatalogItem /></li>
-                <li className="product-item"><CatalogItem /></li>
-                <li className="product-item"><CatalogItem /></li>
+        <div className="catalog-container" id="catalog" role="region" aria-label="Catalog of products">
+            <h1 className="catalog-title" aria-level="1">Catalog</h1>
+            <SearchInput aria-label="Search for products" />
+            <ul className="product-list" role="list">
+                <li><CatalogItem /></li>
+                <li><CatalogItem /></li>
+                <li><CatalogItem /></li>
+                <li><CatalogItem /></li>
+                <li><CatalogItem /></li>
+                <li><CatalogItem /></li>
             </ul>
-        </div>
+            <div className="card-list-more-container"> 
+                <button className="card-list-more" aria-label="Show more products">Show more</button>
+            </div>
+            </div>
+
         </>
     )
 }
