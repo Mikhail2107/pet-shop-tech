@@ -1,4 +1,3 @@
-
 import './FAQ.css'
 
 function FAQ(){

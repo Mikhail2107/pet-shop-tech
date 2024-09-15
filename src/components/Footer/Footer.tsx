@@ -1,5 +1,3 @@
-
-
 import './Footer.css'
 
 function Footer (){
@@ -17,8 +15,7 @@ function Footer (){
                     <a className="header-link" href="#faq">FAQ</a>
                 </li>
             </ul>
-            </div>
-            
+            </div>            
         </footer>
         </>
     )

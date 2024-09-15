@@ -1,6 +1,5 @@
 import './Sale.css'
 
-
 function Sale(){
 
     return (
@@ -19,8 +18,7 @@ function Sale(){
                   <button className="sale-buy">Go to shopping</button>   
                 </a>                
             </div>
-        </div>    
-        
+        </div>  
         </>
     )
 }

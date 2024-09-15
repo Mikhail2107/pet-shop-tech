@@ -1,5 +1,3 @@
-
-
 import './SearchInput.css'
 
 function SearchInput(){

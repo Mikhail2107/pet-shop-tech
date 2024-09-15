@@ -13,8 +13,7 @@ function CatalogItem() {
                     </div>
                     <Link to='/product/123'>
                         <img className="product-image" title='Essence Mascara' src={Image} alt="product-name" />
-                    </Link>
-                    
+                    </Link>                    
                 </div>
                 <div className="product-card">
                     <div className="product-info">
@@ -24,7 +23,6 @@ function CatalogItem() {
                     <div className="product-buy"></div>
                 </div>
             </div>
-
         </>
     )
 }
