@@ -8,7 +8,7 @@ function Catalog() {
     return (
         <>
         <div className="catalog-container" id="catalog" role="region" aria-label="Catalog of products">
-            <h1 className="catalog-title" aria-level="1">Catalog</h1>
+            <h1 className="catalog-title">Catalog</h1>
             <SearchInput aria-label="Search for products" />
             <ul className="product-list" role="list">
                 <li><CatalogItem /></li>
@@ -22,7 +22,6 @@ function Catalog() {
                 <button className="card-list-more" aria-label="Show more products">Show more</button>
             </div>
             </div>
-
         </>
     )
 }

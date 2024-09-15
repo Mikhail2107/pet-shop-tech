@@ -1,16 +1,22 @@
 import Catalog from '../components/Catalog/Catalog';
-import HomeTop from '../components/widget/HomeTop/HomeTop';
+import Header from '../components/Header/Header';
 import FAQ from '../components/FAQ/FAQ'
 import Footer from '../components/Footer/Footer';
+import Sale from '../components/Sale/Sale';
+import { Helmet } from 'react-helmet';
 
 function Home() {
   
   return (
     <>
-      <HomeTop />    
-      <Catalog />  
-      <FAQ />
-      <Footer />
+      <Helmet>
+        <title>Catalog | Goods4you</title>
+      </Helmet>
+        <Header />
+        <Sale />    
+        <Catalog />  
+        <FAQ />
+        <Footer />  
     </>
   )
 }

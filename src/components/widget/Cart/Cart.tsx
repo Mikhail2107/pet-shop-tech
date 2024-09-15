@@ -1,11 +1,16 @@
+import { Helmet } from 'react-helmet'
 import Image from '../../../assets/image.png'
 
 import './Cart.css'
+import { Link } from 'react-router-dom'
 
 function Cart() {
 
     return (
         <>
+        <Helmet>
+                <title>My cart | Goods4you </title>
+        </Helmet>
         <div className="cart-container">
             <h2 className="cart-title">My Cart</h2>
             <div className="cart-box">
@@ -13,8 +18,10 @@ function Cart() {
                     <li className="cart-item">
                         <div className="cart-product-info">
                         <img className='cart-image' src={Image} alt="product-img" />
-                            <div className="cart-product">                                
-                                <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                            <div className="cart-product">
+                                <Link to="/product/123">
+                                    <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                </Link>                                
                                 <span className="cart-product-price">$110</span>
                             </div> 
                             <div className="count-buttons">
@@ -29,7 +36,9 @@ function Cart() {
                         <div className="cart-product-info">
                         <img className='cart-image' src={Image} alt="product-img" />
                             <div className="cart-product">                                
-                                <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                <Link to="/product/123">
+                                    <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                </Link> 
                                 <span className="cart-product-price">$110</span>
                             </div> 
                             <div className="count-buttons">
@@ -44,7 +53,9 @@ function Cart() {
                         <div className="cart-product-info">
                         <img className='cart-image' src={Image} alt="product-img" />
                             <div className="cart-product">                                
-                                <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                <Link to="/product/123">
+                                    <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                </Link> 
                                 <span className="cart-product-price">$110</span>
                             </div> 
                             <div className="count-buttons">
@@ -59,7 +70,9 @@ function Cart() {
                         <div className="cart-product-info">
                             <img className='cart-image' src={Image} alt="product-img" />
                             <div className="cart-product">                                
-                                <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                <Link to="/product/123">
+                                    <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                </Link> 
                                 <span className="cart-product-price">$110</span>
                             </div> 
                             <div className="count-buttons"></div>

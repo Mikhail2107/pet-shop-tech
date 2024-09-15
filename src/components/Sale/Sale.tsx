@@ -5,8 +5,9 @@ function Sale(){
 
     return (
         <>
-        <div className="sale-container">
-                
+        <div className="home-top">                
+                <p className="backgruond-text">Goods4you</p>
+                <div className="sale-container">                
                 <p className="sale-title">
                     Any products from famous brands with worldwide delivery
                 </p>
@@ -16,9 +17,10 @@ function Sale(){
                 </p>
                 <a href="#catalog">
                   <button className="sale-buy">Go to shopping</button>   
-                </a>
-                
+                </a>                
             </div>
+        </div>    
+        
         </>
     )
 }

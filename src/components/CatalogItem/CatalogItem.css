@@ -4,6 +4,10 @@
     border-radius: 6px;
     border: 1px solid #D5D5D5;
     box-sizing: border-box;
+    /* text-decoration: none; */
+}
+.product-item span {
+  text-decoration: none;
 }
 .product-imagebox{
     position: relative;
@@ -35,8 +39,10 @@
     font-weight: 600;
     font-size: 16px;
     color: #444B58;
+    text-decoration: none;
+    outline: none;
 }
-.product-price {
+.product-cardprice {
     margin: 0;
     width: 50px;
     height: 24px;

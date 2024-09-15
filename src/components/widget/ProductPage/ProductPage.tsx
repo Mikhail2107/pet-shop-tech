@@ -1,11 +1,15 @@
 import Image from '../../../assets/image.png'
+import { Helmet } from 'react-helmet';
 
 import './ProductPage.css'
 
 function ProductPage(){
 
     return (
-        <>
+        <>  
+            <Helmet>
+                <title>Essence Mascara Lash Princess | Goods4you </title>
+            </Helmet>
             <div className="product-card-container">
                 <div className="product-card-gallery">
                     <img src={Image} alt="Main photo" className="product-main-photo" />
