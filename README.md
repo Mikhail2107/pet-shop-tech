@@ -1,3 +1,3 @@
 # pet-shop-tech
- 
-https://vercel.com/mikhail2107s-projects/pet-shop-tech/FUwSjy5GypCfyZjahmPVHMZ9Df55
+Перейдите по ссылке на пет-проект
+ https://pet-shop-tech-pg3z-in2dbucdw-mikhail2107s-projects.vercel.app
