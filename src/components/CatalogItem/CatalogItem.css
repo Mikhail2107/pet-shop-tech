@@ -120,8 +120,11 @@
     transition: background-color 0.3s;
 
 }
-.count-input {
-  
+.count-input {  
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  text-align: center;
 }
 .cart-minus-plus:hover {
     background-color: #8C2828;
