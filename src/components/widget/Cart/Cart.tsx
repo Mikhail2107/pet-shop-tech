@@ -70,8 +70,8 @@ function Cart() {
                         <div className="cart-product-info">
                             <img className='cart-image' src={Image} alt="product-img" />
                             <div className="cart-product">                                
-                                <Link to="/product/123">
-                                    <span className="cart-product-title"> Essence Mascara Lash Princess</span>
+                                <Link className="cart-product-title" to="/product/123">
+                                    <span > Essence Mascara Lash Princess</span>
                                 </Link> 
                                 <span className="cart-product-price">$110</span>
                             </div> 

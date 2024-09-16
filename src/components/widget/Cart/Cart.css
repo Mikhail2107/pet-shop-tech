@@ -46,6 +46,10 @@
     display: flex;
     flex-direction: column;
 }
+.cart-product a{
+    text-decoration: none;
+    color: inherit;
+}
 .cart-image {
     width: 100px;
     height: 100px;
@@ -56,7 +60,13 @@
     font-size: 18px;
     color: #444B58;
     text-decoration: none;
-}
+  }
+  
+  .cart-product-title Link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
 
 .cart-product-price{
     font-weight: 400;
