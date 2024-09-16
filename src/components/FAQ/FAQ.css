@@ -34,12 +34,18 @@
     height: 20px;
     cursor: pointer;
     background: url("../../assets/Button.svg") 50% 50% no-repeat;
+    border: none;
 }
+
 .faq-button-show.button-show {
     transform: rotate(45deg);
 }
 .faq-answer {
+    display: none;
     font-weight: 600;
     font-size: 16px;
     line-height: 30px;
+}
+.faq-answer.button-show {
+    display: block;
 }
