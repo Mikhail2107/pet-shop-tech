@@ -44,9 +44,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
 }
-.sale-buy:hover {
-  background-color: #8C2828;
-}
+
 @media (max-width: 780px) {
     .sale-title {
         max-width: 80%;

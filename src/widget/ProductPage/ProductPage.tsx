@@ -2,6 +2,7 @@ import Image from '../../assets/image.png'
 import { Helmet } from 'react-helmet';
 
 import './ProductPage.css'
+import Button from '../../share/atom/Button/Button';
 
 function ProductPage(){
 
@@ -72,8 +73,7 @@ function ProductPage(){
                             
                             <span className="product-discount">Your discount <b>14.5%</b></span>
                         </div>
-                        
-                        <button className="button-buy">Add to cart</button>
+                        <Button className='button-buy' bgImage={false} ariaLabel={'Add to cart'}>Add to cart</Button>
                     </div>
                 </div>
             </div>

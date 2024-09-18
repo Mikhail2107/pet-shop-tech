@@ -1,3 +1,4 @@
+import Button from '../../share/atom/Button/Button'
 import './Sale.css'
 
 function Sale(){
@@ -16,6 +17,7 @@ function Sale(){
                 </p>
                 <a href="#catalog">
                   <button className="sale-buy">Go to shopping</button>   
+                    <Button className='sale-buy"' ariaLabel={'Go to shopping'} bgImage={false}>Go to shopping</Button>
                 </a>                
             </div>
         </div>  

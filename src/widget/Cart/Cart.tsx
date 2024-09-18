@@ -69,7 +69,8 @@ function Cart() {
                   </div> 
                   {item.count === 0 ? (
                     <Button className='button-cart' bgImage={true}
-                      onClick={() => handleIncreaseCount(item.id)}>
+														onClick={() => handleIncreaseCount(item.id)} 
+														ariaLabel={'Add to cart'}>
                       Add to cart
                     </Button>
                   ) : (
