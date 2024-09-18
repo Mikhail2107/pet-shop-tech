@@ -17,7 +17,6 @@
     width: 520px;
     overflow: scroll;
     scrollbar-width: none;
-    cursor: pointer;
 }
 .little-photo {
     width: 70px;
@@ -25,6 +24,10 @@
     margin: 10px;   
     border: 1px solid #D5D5D5;
     border-radius: 4px;
+    cursor: pointer;
+}
+.little-photo:hover {
+    border: 1px solid #444B58;
 }
 .product-title {
     font-weight: 600;
