@@ -56,7 +56,8 @@
     padding: 0;
     width: 50px;
     height: 50px;    
-    border: none;border-radius: 4px;
+    border: none;
+    border-radius: 4px;
     color: #FFFFFF;    
     background: url('../../assets/Vector.svg') 50% 50% #F14F4F no-repeat;
     transition: background-color 0.3s;
@@ -108,30 +109,7 @@
 .product-imagebox:hover .hide-box {
     opacity: 1; 
   }
-  .count-buttons{
+.count-buttons{
     transition: all 0.5s ease;
   }
-  .cart-minus-plus{
-    width: 50px;
-    height: 50px;
-    background-color: #F14F4F;
-    border-radius: 4px;
-    border: none;
-    transition: background-color 0.3s;
 
-}
-.count-input {  
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 19.6px;
-  text-align: center;
-}
-.cart-minus-plus:hover {
-    background-color: #8C2828;
-}
-.button-plus {
-    background: url("../../../assets/plus.svg") 50% 50% no-repeat #F14F4F
-}
-.button-minus {
-    background: url("../../../assets/minus.svg") 50% 50% no-repeat #F14F4F
-}

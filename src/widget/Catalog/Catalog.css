@@ -25,7 +25,7 @@
   }
   
   .card-list-more {
-    background-color: #4CAF50;
+    background-color: #F14F4F;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -47,7 +47,7 @@
     height: 61px;
     border: none;
     border-radius: 4px;
-    background-color: #F14F4F;
+    /* background-color: #F14F4F; */
     color: #FFFFFF;
     align-items: center;
     justify-content: center;

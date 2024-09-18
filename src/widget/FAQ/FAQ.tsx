@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import Button from '../../share/ui/Button/Button';
 import './FAQ.css';
 
 interface FAQItem {
@@ -54,8 +55,8 @@ function FAQ() {
               </li>
             ))}
           </ul>
-        </div>   
-      </div>
+        </div>
+       </div>
     </>
   );
 }

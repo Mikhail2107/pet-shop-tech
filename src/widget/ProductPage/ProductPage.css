@@ -44,11 +44,11 @@
 .rate-star {
     width: 20px;
     height: 20px; 
-    background: url('../../../assets/Star4.svg') no-repeat;
+    background: url('../../assets/Star4.svg') no-repeat;
     cursor: pointer;
 }
 .rate-star:last-child {
-    background: url('../../../assets/Star5.svg') no-repeat;    
+    background: url('../../assets/Star5.svg') no-repeat;    
 }
 .product-rang {
     font-weight: 400;

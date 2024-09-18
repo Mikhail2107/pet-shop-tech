@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Image from '../../assets/image.png';
 import './CatalogItem.css';
 import { useState } from 'react';
+import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
 
 function CatalogItem() {
   const [count, setCount] = useState(0); 
@@ -41,14 +42,13 @@ function CatalogItem() {
 
           {count === 0 ? (
             <div className="product-buy" tabIndex={6} onClick={handleIncreaseCount}></div>
-          ) : (
-            <div className="count-buttons">
-              <div className="cart-minus-plus button-minus" onClick={handleDecreaseCount}></div>
-              <span className='count-input' id='count-input'>{count} item</span>                           
-              <div className="cart-minus-plus button-plus" onClick={handleIncreaseCount}></div>
-            </div> 
+          ) : ( <ButtonControl className='count-buttons'
+                          onClickButtonMinus={handleDecreaseCount}
+                           onClickButtonPlus={handleIncreaseCount} 
+                           itemText={`${count} item`} 
+                           ariaLabelButtonMinus={'Button to minus'} 
+                           ariaLabelButtonPlus={'plus'} />
           )}
-          
         </div>
       </div>
     </>

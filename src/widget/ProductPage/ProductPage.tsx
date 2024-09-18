@@ -1,4 +1,4 @@
-import Image from '../../../assets/image.png'
+import Image from '../../assets/image.png'
 import { Helmet } from 'react-helmet';
 
 import './ProductPage.css'

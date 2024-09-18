@@ -1,4 +1,4 @@
-import NotFound from "../components/widget/NotFound/NotFound";
+import NotFound from "../widget/NotFound/NotFound";
 
 function PageNotFound() {
     return (

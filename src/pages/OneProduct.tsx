@@ -1,6 +1,6 @@
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import ProductPage from '../components/widget/ProductPage/ProductPage';
+import Header from '../widget/Header/Header';
+import Footer from '../widget/Footer/Footer';
+import ProductPage from '../widget/ProductPage/ProductPage';
 
 function OneProduct() {
 

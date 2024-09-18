@@ -1,6 +1,6 @@
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import Cart from '../components/widget/Cart/Cart';
+import Header from '../widget/Header/Header';
+import Footer from '../widget/Footer/Footer';
+import Cart from '../widget/Cart/Cart';
 
 function MyCart() {
 

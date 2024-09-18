@@ -1,3 +1,4 @@
+import Button from "../../share/atom/Button/Button";
 import CatalogItem from "../CatalogItem/CatalogItem";
 import SearchInput from "../SearchInput/SearchInput";
 
@@ -19,7 +20,7 @@ function Catalog() {
                 <li><CatalogItem /></li>
             </ul>
             <div className="card-list-more-container"> 
-                <button className="card-list-more" aria-label="Show more products">Show more</button>
+                <Button className="card-list-more" ariaLabel="Show more products" children="Show more" ></Button>            
             </div>
             </div>
         </>
