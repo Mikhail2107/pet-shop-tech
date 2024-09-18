@@ -130,14 +130,5 @@
 .button-buy {
     width: 176px;
     height: 62px;
-    border: none;
-    border-radius: 4px;
-    background-color: #F14F4F;
     padding: 20px 50px;
-    color: #FFFFFF;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.button-buy:hover {
-    background-color: #8C2828;
 }
