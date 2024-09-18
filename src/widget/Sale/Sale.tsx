@@ -15,9 +15,8 @@ function Sale(){
                     We sell smartphones, laptops, clothes, 
                     shoes and many other products at low prices
                 </p>
-                <a href="#catalog">
-                  <button className="sale-buy">Go to shopping</button>   
-                    <Button className='sale-buy"' ariaLabel={'Go to shopping'} bgImage={false}>Go to shopping</Button>
+                <a href="#catalog"> 
+                    <Button className='sale-buy' ariaLabel={'Go to shopping'} bgImage={false}>Go to shopping</Button>
                 </a>                
             </div>
         </div>  
