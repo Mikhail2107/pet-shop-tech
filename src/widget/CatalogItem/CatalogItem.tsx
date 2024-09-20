@@ -25,12 +25,12 @@ function CatalogItem({id, price, title, images}: Product) {
           <div className="hide-box">
             <span className="show-details" tabIndex={5}>Show details</span>
           </div>
-          <Link to={`/product/${id}`}>
+          <Link to={`/product/${id}`} >
             <img
               className="product-image"
-              title='Essence Mascara'
+              title={title}
               src={images[0]} 
-              alt="Essence Mascara" 
+              alt={title} 
             />
           </Link>                    
         </div>

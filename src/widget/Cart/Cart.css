@@ -3,7 +3,7 @@
     font-size: 36px;
     color: #444B58;
 }
-.cart-container {
+.cart-container {   
     justify-content: center;
     align-items: center;
     margin: 50px;
@@ -19,6 +19,7 @@
 }
 .cart-list {
     width: auto;
+    height: 70vh;
     list-style: none;    
     border: 1px solid gray;
     padding: 0;
@@ -34,7 +35,7 @@
     border-radius: 4px;
     align-items: center;
 }
-.cart-item:last-child > .cart-product-info{
+.cart-item.cart-opacity > .cart-product-info{
     opacity: 0.5;
 }
 .cart-product-info{

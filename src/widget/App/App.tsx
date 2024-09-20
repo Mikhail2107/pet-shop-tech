@@ -9,6 +9,7 @@ import './App.css';
 function App() {
   return (
     <>
+    <main>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} /> 
@@ -17,6 +18,8 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </Router>
+    </main>
+      
     </>
   );
 }

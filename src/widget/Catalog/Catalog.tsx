@@ -2,6 +2,7 @@ import Button from "../../share/atom/Button/Button";
 import CatalogItem from "../CatalogItem/CatalogItem";
 import SearchInput from "../SearchInput/SearchInput";
 import { useGetProductsQuery } from "../../entities/product/productApi/productsApi";
+import Spiner from "../../share/spiner/spiner";
 
 import './Catalog.css'
 
@@ -9,7 +10,7 @@ function Catalog() {
     const {data: products, isLoading,} = useGetProductsQuery();
  console.log(products)
 if (isLoading) {
-	return <p>Loading...</p>;
+	return <Spiner />;
 }
     return (
         <>

@@ -1,12 +1,12 @@
-
-.footer-container {    
+.footer-container {
     max-width: 100%;
-    margin: 0;    
+    margin: 0;
     background-color: #444B58;
     position: relative;
     left: 0;
     right: 0;
     bottom: 0;
+    padding: 20px 0;
 }
 .footer-box {
     display: grid;

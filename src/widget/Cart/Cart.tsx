@@ -20,12 +20,7 @@ function Cart() {
     { id: 2, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
     { id: 3, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
   ]);
-
-  // const cartPrice = [
-  //   { id: 0, titlePrice: 'Total count', priceCount: `${cartItems.reduce((acc, item) => acc + item.count, 0)} item`, classNameTitle: 'total-totalcount', classNamePrice: 'cart-total-item' },
-  //   { id: 1, titlePrice: 'Price without discount', priceCount: `$${cartItems.reduce((acc, item) => acc + item.price * item.count, 0)}`, classNameTitle: 'cart-discount', classNamePrice: 'cart-price-discount' },
-  //   // ... (добавьте логику для расчета скидки и окончательной цены)
-  // ];
+ 
 	const cartPrice = [
     { id: 0, titlePrice: 'Total count', priceCount: `${3} item`, classNameTitle: 'total-totalcount', classNamePrice: 'cart-total-item' },
     { id: 1, titlePrice: 'Price without discount', priceCount: `$${700}`, classNameTitle: 'cart-discount', classNamePrice: 'cart-price-discount' },
@@ -58,7 +53,7 @@ function Cart() {
         <div className="cart-box">
           <ul className="cart-list">
             {cartItems.map(item => (
-              <li key={item.id} className="cart-item">
+              <li key={item.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   <img className='cart-image' src={item.imageUrl} alt="product-img" />
                   <div className="cart-product">
