@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import Image from '../../assets/image.png';
+// import Image from '../../assets/image.png';
 import './CatalogItem.css';
 import { useState } from 'react';
 import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
+import { Product } from '../../entities/product/productApi/interface';
 
-function CatalogItem() {
+function CatalogItem({id, price, title, images}: Product) {
   const [count, setCount] = useState(0); 
 
   const handleIncreaseCount = () => {
@@ -24,11 +25,11 @@ function CatalogItem() {
           <div className="hide-box">
             <span className="show-details" tabIndex={5}>Show details</span>
           </div>
-          <Link to='/product/123'>
+          <Link to={`/product/${id}`}>
             <img
               className="product-image"
               title='Essence Mascara'
-              src={Image} 
+              src={images[0]} 
               alt="Essence Mascara" 
             />
           </Link>                    
@@ -36,8 +37,8 @@ function CatalogItem() {
 
         <div className="product-card">
           <div className="product-info">
-            <span className="product-name">Essence Mascara</span>
-            <span className="product-cardprice">$110</span>
+            <span className="product-name">{title}</span>
+            <span className="product-cardprice">{price}</span>
           </div>
 
           {count === 0 ? (

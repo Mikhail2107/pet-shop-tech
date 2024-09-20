@@ -11,6 +11,14 @@
 .product-imagebox{
     position: relative;
     cursor: pointer;
+    width: 100%;
+    height: 300px;
+    
+}
+.product-imagebox img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .show-details {
     position: absolute;
@@ -42,6 +50,9 @@
     color: #444B58;
     text-decoration: none;
     outline: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .product-cardprice {
     margin: 0;
@@ -81,6 +92,9 @@
   }
 
 .product-image {
+    width: 100%;
+    /* height: 100%; */
+    background-size:cover;
     transition: opacity 0.3s ease;
   }
 

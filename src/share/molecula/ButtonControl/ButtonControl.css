@@ -17,8 +17,8 @@
     background-color: #8C2828;
 }
 .button-plus {
-    background: url("../../assets/plus.svg") 50% 50% no-repeat #F14F4F;
+    background: url("../../../assets/plus.svg") 50% 50% no-repeat #F14F4F;
 }
 .button-minus {
-    background: url("../../assets/minus.svg") 50% 50% no-repeat #F14F4F;
+    background: url("../../../assets/minus.svg") 50% 50% no-repeat #F14F4F;
 }
