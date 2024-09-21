@@ -1,6 +1,7 @@
 .spiner-box {
     width: 100%;
-    height: auto;
+    height: 100vh;
+    margin: 100px;
 }
 .loading-spiner {
     position: fixed;

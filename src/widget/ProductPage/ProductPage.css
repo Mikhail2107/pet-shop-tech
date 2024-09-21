@@ -50,7 +50,7 @@
     background: url('../../assets/Star4.svg') no-repeat;
     cursor: pointer;
 }
-.rate-star:last-child {
+.rate-star.rate-star-none {
     background: url('../../assets/Star5.svg') no-repeat;    
 }
 .product-rang {

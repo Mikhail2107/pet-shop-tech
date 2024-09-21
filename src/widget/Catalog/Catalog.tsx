@@ -8,7 +8,7 @@ import './Catalog.css'
 
 function Catalog() {
     const {data: products, isLoading,} = useGetProductsQuery();
- console.log(products)
+ 
 if (isLoading) {
 	return <Spiner />;
 }
@@ -20,8 +20,8 @@ if (isLoading) {
             <ul className="product-list" role="list">                
 									{products && products.map((product) => (
 										<li key={product.id}>
-										<CatalogItem {...product}/>
-									</li> 
+											<CatalogItem {...product}/>
+									  </li> 
 									))}
 									                     
             </ul>

@@ -45,10 +45,11 @@ function Cart() {
 
   return (
     <>
+    <div className="cart-container">
       <Helmet>
         <title>My cart | Goods4you </title>
       </Helmet>
-      <div className="cart-container">
+      
         <h2 className="cart-title">My Cart</h2>
         <div className="cart-box">
           <ul className="cart-list">

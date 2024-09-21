@@ -5,26 +5,45 @@ import Spiner from "../../share/spiner/spiner";
 
 import './ProductPage.css';
 import Button from '../../share/atom/Button/Button';
+import { useState } from 'react';
 
 function ProductPage() {
   const { productId } = useParams();
-  const { data: product, isLoading } = useGetProductByIdQuery(parseInt(productId, 10)); 
+  const { data: product, isLoading } = useGetProductByIdQuery(parseInt(productId, 10));
+  const [imageMainIndex, setImageMainIndex] = useState(0); 
+  const starsRate: string[] = ['rate-star', 'rate-star', 'rate-star', 'rate-star', 'rate-star'];
+  const rating: number = Math.round(product?.rating)
+
+  console.log(product?.rating)
 
   if (isLoading) {
     return <Spiner />;
   }
 
+  const handleReplaceImage =(index: number) => {
+    setImageMainIndex(index); 
+  }
+  
   return (
     <>
       <Helmet>
         <title>{product?.title} | Goods4you</title>
       </Helmet>
+
       <div className="product-card-container">
         <div className="product-card-gallery">
-          <img src={product?.images[0]} alt="Main photo" className="product-main-photo" />
+          <img 
+            src={product?.images[imageMainIndex]}
+            alt="Main photo" 
+            className="product-main-photo" 
+          />
           <ul className="gallery-photo">
-            {product?.images.slice(1).map((image:string, index: number) => (
-              <li className="product-little-photo" key={index}>
+            {product?.images.map((image:string, index: number) => (
+              <li 
+                className="product-little-photo" 
+                key={index}
+                onClick={() => handleReplaceImage(index)}
+              >
                 <img src={image} alt="little photo" className="little-photo" />
               </li>
             ))}
@@ -35,7 +54,9 @@ function ProductPage() {
           <div className="product-rating-box">
             <div className="product-rate">
               <ul className="rate-list">
-                {/* Здесь вы можете реализовать отображение рейтинга, например, звезд */}
+              {starsRate.map((star, index) => (
+                <li className={rating >= index+1 ? star : star + ' rate-star-none'}></li>
+              ))}
               </ul>
             </div>
             <span className="product-rang">{product?.category}</span>

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-// import Image from '../../assets/image.png';
 import './CatalogItem.css';
 import { useState } from 'react';
 import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
 import { Product } from '../../entities/product/productApi/interface';
+import Button from '../../share/atom/Button/Button';
 
 function CatalogItem({id, price, title, images}: Product) {
   const [count, setCount] = useState(0); 
@@ -42,7 +42,10 @@ function CatalogItem({id, price, title, images}: Product) {
           </div>
 
           {count === 0 ? (
-            <div className="product-buy" tabIndex={6} onClick={handleIncreaseCount}></div>
+            <Button className='product-buy' 
+              ariaLabel={'add to cart'} 
+              bgImage={true} 
+              onClick={handleIncreaseCount}/>            
           ) : ( <ButtonControl className='count-buttons'
                           onClickButtonMinus={handleDecreaseCount}
                            onClickButtonPlus={handleIncreaseCount} 
