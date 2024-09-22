@@ -4,11 +4,8 @@ import cartReducer from '../../cart/cartSlice';
 
 export const store = configureStore({
     reducer: {
-        [productsApi.reducerPath]: productsApi.reducer,
-        reducer: {
-            cart: cartReducer,
-          },  
-        
+        [productsApi.reducerPath]: productsApi.reducer, // Правильно
+        cart: cartReducer, // Правильно
     },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware().concat(productsApi.middleware),

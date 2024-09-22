@@ -1,32 +1,55 @@
 import { useParams } from 'react-router-dom';
-import { useGetProductByIdQuery } from '../../entities/product/productApi/productsApi'; 
+import { useGetProductByIdQuery } from '../../entities/product/productApi/productsApi';
 import { Helmet } from 'react-helmet';
+import Button from '../../share/atom/Button/Button';
+import NotFound from '../NotFound/NotFound';
 import Spiner from "../../share/spiner/spiner";
 
 import './ProductPage.css';
-import Button from '../../share/atom/Button/Button';
 import { useEffect, useState } from 'react';
 
 function ProductPage() {
   const { productId } = useParams();
-  const { data: product, isLoading } = useGetProductByIdQuery(parseInt(productId, 10));
-  const [imageMainIndex, setImageMainIndex] = useState(0); 
-  const starsRate: string[] = ['rate-star', 'rate-star', 'rate-star', 'rate-star', 'rate-star'];
-  const rating: number = Math.round(product?.rating)
+  
+  if (productId === undefined) {
+    return <NotFound />;
+  }
+  const productID = parseInt(productId, 10);
+  const { data: product, isLoading, error } = useGetProductByIdQuery(productID); 
 
+  const [imageMainIndex, setImageMainIndex] = useState<number>(0);
+  const starsRate: string[] = ['rate-star', 'rate-star', 'rate-star', 'rate-star', 'rate-star'];
+
+  const rating = product?.rating ? Math.round(product.rating) : NaN;
+
+  const oldPrice = () => {
+    if (product?.price !== undefined && product?.discountPercentage !== undefined) {
+      return +(product?.price * (1 + product?.discountPercentage / 100)).toFixed(2);
+    }
+    return null;
+  };
+
+  function handleReplaceImage(index: number): void {
+    setImageMainIndex(index);
+  }
 
   useEffect(() => {
-    handleReplaceImage
-  },[]) 
+    if (!isLoading) {
+      handleReplaceImage;
+    }
+  }, [product, isLoading]);
+
+  if (productId === undefined) {
+    return <NotFound />;
+  }
 
   if (isLoading) {
     return <Spiner />;
   }
 
-  function handleReplaceImage (index: number): void {
-    setImageMainIndex(index); 
+  if (error) {
+    return <div>Ошибка загрузки данных о товаре</div>;
   }
-  
   return (
     <>
       <Helmet>
@@ -75,7 +98,7 @@ function ProductPage() {
             <div className="product-price-place">
               <div className="price">
                 <span className="product-price">${product?.price}</span>
-                <span className="price-oldprice">${(product?.price * (1 + product?.discountPercentage / 100)).toFixed(2)}</span> 
+                <span className="price-oldprice">{oldPrice()}</span> 
               </div>
 
               <span className="product-discount">Your discount <b>{product?.discountPercentage}%</b></span>

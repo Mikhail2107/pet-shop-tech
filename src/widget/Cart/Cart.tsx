@@ -10,7 +10,7 @@ import './Cart.css';
 
 function Cart() {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => console.log(state.cart.cart));
+  const cart = useSelector((state) => state.cart.cart?.carts);
   
   const cartId = 6;
   // console.log(state)
@@ -20,7 +20,7 @@ function Cart() {
     { id: 3, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
   ]);
   useEffect(() => {
-    dispatch(fetchCart(cartId));
+    dispatch(fetchCart(6));
   }, [dispatch, cartId]);
 
   const cartItems = useMemo(() => {
@@ -73,13 +73,13 @@ function Cart() {
         <h2 className="cart-title">My Cart</h2>
         <div className="cart-box">
           <ul className="cart-list">
-            {cartItem.map(item => (
-              <li key={item.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
+            {cart.map(item => (
+              <li key={item.products.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   {/* <img className='cart-image' src={item.imageUrl} alt="product-img" /> */}
                   <div className="cart-product">
                     <Link to={`/product/${item.id}`}>
-                      <span className="cart-product-title">{item.title}</span>
+                      <span className="cart-product-title">{item.products.title}</span>
                     </Link>
                     <span className="cart-product-price">${item.price}</span>
                   </div>
