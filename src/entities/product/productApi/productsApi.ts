@@ -7,10 +7,10 @@ export const productsApi = createApi({
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], void>({
       query: () => '',
-      transformResponse: (response: ProductData) => response.products, // Извлечение массива products из ответа
+      transformResponse: (response: ProductData) => response.products, 
     }),
     getProductById: builder.query<Product, number>({
-      query: (productId) => `/${productId}`, // URL с ID продукта
+      query: (productId) => `/${productId}`, 
     }),
   }),
 });

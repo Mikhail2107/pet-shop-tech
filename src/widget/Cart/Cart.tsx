@@ -1,38 +1,57 @@
 import { Helmet } from 'react-helmet';
-import Image from '../../assets/image.png';
 import { Link } from 'react-router-dom';
-import './Cart.css';
 import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { fetchCart } from '../../entities/cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../share/atom/Button/Button';
 
-interface CartItem {
-  id: number;
-  title: string;
-  price: number;
-  imageUrl: string;
-  count: number;
-}
+import './Cart.css';
 
 function Cart() {
-  const [cartItems, setCartItems] = useState<CartItem[]>( [
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => console.log(state.cart.cart));
+  
+  const cartId = 6;
+  // console.log(state)
+  const [cartItem, setCartItems] = useState( [
     { id: 1, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
     { id: 2, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
     { id: 3, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
   ]);
- 
-	const cartPrice = [
-    { id: 0, titlePrice: 'Total count', priceCount: `${3} item`, classNameTitle: 'total-totalcount', classNamePrice: 'cart-total-item' },
-    { id: 1, titlePrice: 'Price without discount', priceCount: `$${700}`, classNameTitle: 'cart-discount', classNamePrice: 'cart-price-discount' },
-    {id: 2, titlePrice: 'Total price', priceCount: `$ ${590}`, classNameTitle: 'cart-total-price', classNamePrice: 'cart-total-discount'},
-  ];
+  useEffect(() => {
+    dispatch(fetchCart(cartId));
+  }, [dispatch, cartId]);
 
+  const cartItems = useMemo(() => {
+      console.log(cart);
+    if (cart && cart.products) {
+      return cart.products.map((item) => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        imageUrl: item.thumbnail,
+        count: item.quantity,
+      }));
+    } else {
+      return [];
+    }
+  }, [cart]);
+
+
+  console.log(cartItems);
+
+  const cartPrice = [
+    { id: 0, titlePrice: 'Total count', priceCount: `${3} item`, classNameTitle: 'total-totalcount', classNamePrice: 'cart-total-item' },
+    { id: 1, titlePrice: 'Price without discount', priceCount: `$${760}`, classNameTitle: 'cart-discount', classNamePrice: 'cart-price-discount' },
+    { id: 2, titlePrice: 'Total price', priceCount: `$${500}`, classNameTitle: 'cart-total-price', classNamePrice: 'cart-total-discount' }, // Получаем discountedTotal
+  ];
+  
   const handleIncreaseCount = (itemId: number) => {
     setCartItems(prevItems => prevItems.map(item => 
       item.id === itemId ? { ...item, count: item.count + 1 } : item
     ));
   };
-
   const handleDecreaseCount = (itemId: number) => {
     setCartItems(prevItems => prevItems.map(item => 
       item.id === itemId && item.count > 0 ? { ...item, count: item.count - 1 } : item
@@ -40,45 +59,46 @@ function Cart() {
   };
 
   const handleDeleteItem = (itemId: number) => {
-    setCartItems(cartItems.filter(item => item.id !== itemId));
+    setCartItems(cartItem.filter(item => item.id !== itemId));
   };
+ 
 
   return (
     <>
-    <div className="cart-container">
-      <Helmet>
-        <title>My cart | Goods4you </title>
-      </Helmet>
-      
+      <div className="cart-container">
+        <Helmet>
+          <title>My cart | Goods4you </title>
+        </Helmet>
+
         <h2 className="cart-title">My Cart</h2>
         <div className="cart-box">
           <ul className="cart-list">
-            {cartItems.map(item => (
+            {cartItem.map(item => (
               <li key={item.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
-                  <img className='cart-image' src={item.imageUrl} alt="product-img" />
+                  {/* <img className='cart-image' src={item.imageUrl} alt="product-img" /> */}
                   <div className="cart-product">
                     <Link to={`/product/${item.id}`}>
                       <span className="cart-product-title">{item.title}</span>
-                    </Link> 
+                    </Link>
                     <span className="cart-product-price">${item.price}</span>
-                  </div> 
+                  </div>
                   {item.count === 0 ? (
                     <Button className='button-cart' bgImage={true}
-														onClick={() => handleIncreaseCount(item.id)} 
-														ariaLabel={'Add to cart'}>
+                            onClick={() => handleIncreaseCount(item.id)}
+                            ariaLabel={'Add to cart'}>
                       Add to cart
                     </Button>
                   ) : (
-                    <ButtonControl 
+                    <ButtonControl
                       className='count-buttons'
                       onClickButtonPlus={() => handleIncreaseCount(item.id)}
-                      onClickButtonMinus={() => handleDecreaseCount(item.id)} 
-                      itemText={`${item.count} item`} 
-                      ariaLabelButtonMinus={'Button to minus'} 
-                      ariaLabelButtonPlus={'Button to plus'} 
+                      onClickButtonMinus={() => handleDecreaseCount(item.id)}
+                      itemText={`${item.count} item`}
+                      ariaLabelButtonMinus={'Button to minus'}
+                      ariaLabelButtonPlus={'Button to plus'}
                     />
-                  )}                                
+                  )}
                 </div>
                 <div className="cart-delete" onClick={() => handleDeleteItem(item.id)}>Delete</div>
               </li>
@@ -92,8 +112,8 @@ function Cart() {
                   <span className={price.classNamePrice}>{price.priceCount}</span>
                 </li>
               ))}
-            </ul>                    
-          </div>   
+            </ul>
+          </div>
         </div>
       </div>
     </>

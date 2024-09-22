@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { useGetProductByIdQuery } from '../../entities/product/productApi/productsApi'; // Импортируем хук для получения продукта по ID
+import { useGetProductByIdQuery } from '../../entities/product/productApi/productsApi'; 
 import { Helmet } from 'react-helmet';
 import Spiner from "../../share/spiner/spiner";
 
 import './ProductPage.css';
 import Button from '../../share/atom/Button/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function ProductPage() {
   const { productId } = useParams();
@@ -14,13 +14,16 @@ function ProductPage() {
   const starsRate: string[] = ['rate-star', 'rate-star', 'rate-star', 'rate-star', 'rate-star'];
   const rating: number = Math.round(product?.rating)
 
-  console.log(product?.rating)
+
+  useEffect(() => {
+    handleReplaceImage
+  },[]) 
 
   if (isLoading) {
     return <Spiner />;
   }
 
-  const handleReplaceImage =(index: number) => {
+  function handleReplaceImage (index: number): void {
     setImageMainIndex(index); 
   }
   
@@ -33,7 +36,7 @@ function ProductPage() {
       <div className="product-card-container">
         <div className="product-card-gallery">
           <img 
-            src={product?.images[imageMainIndex]}
+            src={product?.images[imageMainIndex] || product?.images[0]}
             alt="Main photo" 
             className="product-main-photo" 
           />
