@@ -10,7 +10,7 @@ import './Cart.css';
 
 function Cart() {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart?.carts);
+  const cart = useSelector((state) => state.cart.cart?.carts[0]);
   
   const cartId = 6;
   // console.log(state)
@@ -23,23 +23,19 @@ function Cart() {
     dispatch(fetchCart(6));
   }, [dispatch, cartId]);
 
-  const cartItems = useMemo(() => {
-      console.log(cart);
-    if (cart && cart.products) {
-      return cart.products.map((item) => ({
-        id: item.id,
-        title: item.title,
-        price: item.price,
-        imageUrl: item.thumbnail,
-        count: item.quantity,
-      }));
-    } else {
-      return [];
-    }
-  }, [cart]);
+  // const cartItems = useMemo(() => {
+  //     console.log(cart);
+  //   if (cart && cart.products) {
+  //     return cart.products.map((item) => (
+  //       console.log(item.title)
+  //   ));
+  //   } else {
+  //     return [];
+  //   }
+  // }, [cart]);
 
-
-  console.log(cartItems);
+  
+  console.log(cart.products);
 
   const cartPrice = [
     { id: 0, titlePrice: 'Total count', priceCount: `${3} item`, classNameTitle: 'total-totalcount', classNamePrice: 'cart-total-item' },
@@ -73,13 +69,13 @@ function Cart() {
         <h2 className="cart-title">My Cart</h2>
         <div className="cart-box">
           <ul className="cart-list">
-            {cart.map(item => (
-              <li key={item.products.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
+            {cart.products.map(item => (
+              <li key={item.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
-                  {/* <img className='cart-image' src={item.imageUrl} alt="product-img" /> */}
+                  <img className='cart-image' src={item.thumbnail} alt="product-img" />
                   <div className="cart-product">
                     <Link to={`/product/${item.id}`}>
-                      <span className="cart-product-title">{item.products.title}</span>
+                      <span className="cart-product-title">{item.title}</span>
                     </Link>
                     <span className="cart-product-price">${item.price}</span>
                   </div>
@@ -94,7 +90,7 @@ function Cart() {
                       className='count-buttons'
                       onClickButtonPlus={() => handleIncreaseCount(item.id)}
                       onClickButtonMinus={() => handleDecreaseCount(item.id)}
-                      itemText={`${item.count} item`}
+                      itemText={`${item.quantity} item`}
                       ariaLabelButtonMinus={'Button to minus'}
                       ariaLabelButtonPlus={'Button to plus'}
                     />
