@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useGetProductByIdQuery } from '../../entities/product/productApi/productsApi';
 import { Helmet } from 'react-helmet';
-import Button from '../../share/atom/Button/Button';
 import NotFound from '../NotFound/NotFound';
+import Button from '../../share/atom/Button/Button';
 import Spiner from "../../share/spiner/spiner";
 
 import './ProductPage.css';
-import { useEffect, useState } from 'react';
 
 function ProductPage() {
   const { productId } = useParams();

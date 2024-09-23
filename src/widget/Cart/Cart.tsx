@@ -1,41 +1,33 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchCart } from '../../entities/cart/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../share/atom/Button/Button';
 
 import './Cart.css';
-
+interface ICartItem {
+  id: number; 
+  count: number; 
+  thumbnail: string; 
+  title: string ; 
+  price: string | number ; 
+  quantity: number; 
+}
 function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart?.carts[0]);
   
-  const cartId = 6;
-  // console.log(state)
+  const cartId:number = 6;
   const [cartItem, setCartItems] = useState( [
     { id: 1, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
     { id: 2, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
     { id: 3, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
   ]);
   useEffect(() => {
-    dispatch(fetchCart(6));
+    dispatch(fetchCart(cartId));
   }, [dispatch, cartId]);
-
-  // const cartItems = useMemo(() => {
-  //     console.log(cart);
-  //   if (cart && cart.products) {
-  //     return cart.products.map((item) => (
-  //       console.log(item.title)
-  //   ));
-  //   } else {
-  //     return [];
-  //   }
-  // }, [cart]);
-
-  
-  console.log(cart.products);
 
   const cartPrice = [
     { id: 0, titlePrice: 'Total count', priceCount: `${3} item`, classNameTitle: 'total-totalcount', classNamePrice: 'cart-total-item' },
@@ -69,7 +61,7 @@ function Cart() {
         <h2 className="cart-title">My Cart</h2>
         <div className="cart-box">
           <ul className="cart-list">
-            {cart.products.map(item => (
+            {cart?.products.map((item: ICartItem) => (
               <li key={item.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   <img className='cart-image' src={item.thumbnail} alt="product-img" />
