@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-// Интерфейс для данных корзины
 interface Cart {
   id: number;
   products: Product[];
@@ -10,8 +8,6 @@ interface Cart {
   totalProducts: number;
   totalQuantity: number;
 }
-
-// Интерфейс для данных товара
 interface Product {
   id: number;
   title: string;
@@ -22,14 +18,15 @@ interface Product {
   discountedTotal: number;
   thumbnail: string;
 }
-
 interface CartState {
   cart: Cart | null; 
   isLoading: boolean;
   error: string | null;
 }
-
-export const fetchCart = createAsyncThunk(
+interface FetchCartPayload {
+  carts: CartState[]; 
+}
+export const fetchCart = createAsyncThunk<FetchCartPayload, number>(
   'cart/fetchCart',
   async function (cartId: number) {
     const response = await fetch(`https://dummyjson.com/carts/user/${cartId}`);

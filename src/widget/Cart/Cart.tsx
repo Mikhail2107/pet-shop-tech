@@ -17,7 +17,7 @@ interface ICartItem {
 }
 function Cart() {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart?.carts[0]);
+  const cart = useSelector((state: any) => state.cart.cart?.carts[0]);
   
   const cartId:number = 6;
   const [cartItem, setCartItems] = useState( [
