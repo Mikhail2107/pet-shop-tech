@@ -8,24 +8,12 @@ import { useAppDispatch } from '../../hook/AppDispatch';
 import { AppSelector } from '../../hook/AppSelector';
 
 import './Cart.css';
-interface ICartItem {
-  id: number; 
-  count: number; 
-  thumbnail: string; 
-  title: string ; 
-  price: string | number ; 
-  quantity: number; 
-}
 function Cart() {
   const dispatch = useAppDispatch();
-  const cart = AppSelector((state) => state.cart.cart?.carts[0]);
-  
+  const cart = AppSelector((state) => state.cart.cart.products);
+  const [count,setCount] = useState<number>(0);
   const cartId:number = 6;
-  const [cartItem, setCartItems] = useState( [
-    { id: 1, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
-    { id: 2, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
-    { id: 3, title: 'Essence Mascara Lash Princess', price: 110, imageUrl: Image, count: 1 },
-  ]);
+
   useEffect(() => {
     dispatch(fetchCart(cartId));
   }, [dispatch, cartId]);
@@ -36,20 +24,16 @@ function Cart() {
     { id: 2, titlePrice: 'Total price', priceCount: `$${500}`, classNameTitle: 'cart-total-price', classNamePrice: 'cart-total-discount' }, // Получаем discountedTotal
   ];
   
-  const handleIncreaseCount = (itemId: number) => {
-    setCartItems(prevItems => prevItems.map(item => 
-      item.id === itemId ? { ...item, count: item.count + 1 } : item
-    ));
+  const handleIncreaseCount = () => {
+    setCount((prev: number) => prev + 1);
   };
-  const handleDecreaseCount = (itemId: number) => {
-    setCartItems(prevItems => prevItems.map(item => 
-      item.id === itemId && item.count > 0 ? { ...item, count: item.count - 1 } : item
-    ));
+  const handleDecreaseCount = () => {
+    setCount((prev: number) => prev - 1);
   };
-
-  const handleDeleteItem = (itemId: number) => {
-    setCartItems(cartItem.filter(item => item.id !== itemId));
-  };  
+  console.log(cart)
+  // const handleDeleteItem = (itemId: number) => {
+  //   setCount(count.filter(item => item.id !== itemId));
+  // };  
   return (
     <>
       <div className="cart-container">
@@ -58,11 +42,11 @@ function Cart() {
         </Helmet>
         
         <h2 className="cart-title">My Cart</h2>
-        {cart?.products.length === 0 && <div className='cart-no-items'>No items</div>}
+        {cart?.length === 0 && <div className='cart-no-items'>No items</div>}
         <div className="cart-box">
           <ul className="cart-list">
-            {cart?.products.map((item: ICartItem) => (
-              <li key={item.id} className={item.count === 0 ? "cart-item cart-opacity" : "cart-item"}>
+            {cart?.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
+              <li key={item.id} className={count === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   <img className='cart-image' src={item.thumbnail} alt="product-img" />
                   <div className="cart-product">
@@ -71,24 +55,26 @@ function Cart() {
                     </Link>
                     <span className="cart-product-price">${item.price}</span>
                   </div>
-                  {item.count === 0 ? (
+                  {count === 0 ? (
                     <Button className='button-cart' bgImage={true}
-                            onClick={() => handleIncreaseCount(item.id)}
+                            onClick={() => handleIncreaseCount()}
                             ariaLabel={'Add to cart'}>
                       Add to cart
                     </Button>
                   ) : (
                     <ButtonControl
                       className='count-buttons'
-                      onClickButtonPlus={() => handleIncreaseCount(item.id)}
-                      onClickButtonMinus={() => handleDecreaseCount(item.id)}
+                      onClickButtonPlus={() => handleIncreaseCount()}
+                      onClickButtonMinus={() => handleDecreaseCount()}
                       itemText={`${item.quantity} item`}
                       ariaLabelButtonMinus={'Button to minus'}
                       ariaLabelButtonPlus={'Button to plus'}
                     />
                   )}
                 </div>
-                <div className="cart-delete" onClick={() => handleDeleteItem(item.id)}>Delete</div>
+                <div className="cart-delete" 
+                    // onClick={() => handleDeleteItem(item.id)}
+                    >Delete</div>
               </li>
             ))}
           </ul>
