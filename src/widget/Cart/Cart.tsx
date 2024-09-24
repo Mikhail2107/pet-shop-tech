@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { fetchCart } from '../../entities/cart/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../share/atom/Button/Button';
+import { useAppDispatch } from '../../hook/AppDispatch';
 
 import './Cart.css';
 interface ICartItem {
@@ -16,7 +17,7 @@ interface ICartItem {
   quantity: number; 
 }
 function Cart() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const cart = useSelector((state: any) => state.cart.cart?.carts[0]);
   
   const cartId:number = 6;

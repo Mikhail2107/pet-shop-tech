@@ -10,3 +10,5 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware().concat(productsApi.middleware),
 });
+
+export type AppDispatch = typeof store.dispatch;

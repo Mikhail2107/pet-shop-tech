@@ -23,10 +23,8 @@ interface CartState {
   isLoading: boolean;
   error: string | null;
 }
-interface FetchCartPayload {
-  carts: CartState[]; 
-}
-export const fetchCart = createAsyncThunk<FetchCartPayload, number>(
+
+export const fetchCart = createAsyncThunk(
   'cart/fetchCart',
   async function (cartId: number) {
     const response = await fetch(`https://dummyjson.com/carts/user/${cartId}`);
