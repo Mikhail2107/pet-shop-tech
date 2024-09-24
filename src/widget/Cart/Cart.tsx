@@ -10,7 +10,9 @@ import { AppSelector } from '../../hook/AppSelector';
 import './Cart.css';
 function Cart() {
   const dispatch = useAppDispatch();
-  const cart = AppSelector((state) => state.cart.cart.products);
+  const cart = AppSelector((state) => 
+    state.cart && state.cart.cart ? state.cart.cart.products : []
+  );
   const [count,setCount] = useState<number>(0);
   const cartId:number = 6;
 
