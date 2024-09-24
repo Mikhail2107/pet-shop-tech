@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
 import { useEffect, useState } from 'react';
 import { fetchCart } from '../../entities/cart/cartSlice';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import Button from '../../share/atom/Button/Button';
 import { useAppDispatch } from '../../hook/AppDispatch';
+import { AppSelector } from '../../hook/AppSelector';
 
 import './Cart.css';
 interface ICartItem {
@@ -18,7 +19,7 @@ interface ICartItem {
 }
 function Cart() {
   const dispatch = useAppDispatch();
-  const cart = useSelector((state: any) => state.cart.cart?.carts[0]);
+  const cart = AppSelector((state) => state.cart.cart?.carts[0]);
   
   const cartId:number = 6;
   const [cartItem, setCartItems] = useState( [

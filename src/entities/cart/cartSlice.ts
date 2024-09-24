@@ -19,7 +19,7 @@ interface Product {
   thumbnail: string;
 }
 interface CartState {
-  cart: Cart | null; 
+  cart: Cart; 
   isLoading: boolean;
   error: string | null;
 }
