@@ -1,32 +1,59 @@
+import { useGetProductsQuery } from "../../entities/product/productApi/productsApi";
+import { useState } from "react";
 import Button from "../../share/atom/Button/Button";
 import CatalogItem from "../CatalogItem/CatalogItem";
 import SearchInput from "../SearchInput/SearchInput";
-import { useGetProductsQuery } from "../../entities/product/productApi/productsApi";
 import Spiner from "../../share/spiner/spiner";
+import PageNotFound from "../../pages/PageNotFound";
+import useDebounce from '../../hook/useDebounce';
 
 import './Catalog.css'
 
+
 function Catalog() {
-    const {data: products, isLoading,} = useGetProductsQuery();
+    const [searchTerm, setSearchTerm] = useState('');
+		const debouncedSearchTerm = useDebounce(searchTerm, 300);
+
+    const [currentPage] = useState(1); //setCurrentPage
+    const [productsPerPage,setProductsPerPage] = useState(6);
+    const { data: products, isLoading, error } = useGetProductsQuery({
+        q: debouncedSearchTerm, 
+        limit: productsPerPage,
+        skip: (currentPage - 1) * productsPerPage,
+      });
  
-if (isLoading) {
-	return <Spiner />;
-}
+    // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+     const handleSearch = (searchTerm: string) => {
+       setSearchTerm(searchTerm);
+     };
+
+		 const  handleShowMore = () => {
+			setProductsPerPage(prevPage => prevPage + 12)
+		 }
+     
+    if (isLoading) {
+        return <Spiner />;
+    }
+    if (error) {
+        return <PageNotFound />;
+      }
     return (
         <>
         <div className="catalog-container" id="catalog" role="region" aria-label="Catalog of products">
             <h1 className="catalog-title">Catalog</h1>
-            <SearchInput aria-label="Search for products" />
+            <SearchInput aria-label="Search for products" 
+                        onSearch={handleSearch}/>
             <ul className="product-list" role="list">                
-									{products && products.map((product) => (
-										<li key={product.id}>
-											<CatalogItem {...product}/>
-									  </li> 
-									))}
-									                     
+				{products && products.map((product) => (
+				<li key={product.id}>
+					<CatalogItem {...product}/>
+				</li> 
+			))}									                     
             </ul>
             <div className="card-list-more-container"> 
                 <Button className="card-list-more" 
+										onClick={handleShowMore}
                     ariaLabel="Show more products" 
                     children="Show more" 
                     bgImage={false} >

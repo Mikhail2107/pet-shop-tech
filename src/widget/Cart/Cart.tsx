@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
 import { useEffect, useState } from 'react';
 import { fetchCart } from '../../entities/cart/cartSlice';
-// import { useSelector } from 'react-redux';
 import Button from '../../share/atom/Button/Button';
 import { useAppDispatch } from '../../hook/AppDispatch';
 import { AppSelector } from '../../hook/AppSelector';
@@ -51,16 +50,15 @@ function Cart() {
   const handleDeleteItem = (itemId: number) => {
     setCartItems(cartItem.filter(item => item.id !== itemId));
   };
- 
-
   return (
     <>
       <div className="cart-container">
         <Helmet>
           <title>My cart | Goods4you </title>
         </Helmet>
-
+        
         <h2 className="cart-title">My Cart</h2>
+        {cart.totalProducts === 0 && <p>No items</p>}
         <div className="cart-box">
           <ul className="cart-list">
             {cart?.products.map((item: ICartItem) => (
