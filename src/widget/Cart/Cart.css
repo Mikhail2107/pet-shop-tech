@@ -8,6 +8,11 @@
     align-items: center;
     margin: 50px;
 }
+.cart-no-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .cart-box {    
     border-radius: 4px; 
     display: grid;

@@ -49,7 +49,7 @@ function Cart() {
 
   const handleDeleteItem = (itemId: number) => {
     setCartItems(cartItem.filter(item => item.id !== itemId));
-  };
+  };  
   return (
     <>
       <div className="cart-container">
@@ -58,7 +58,7 @@ function Cart() {
         </Helmet>
         
         <h2 className="cart-title">My Cart</h2>
-        {cart.totalProducts === 0 && <p>No items</p>}
+        {cart?.products.length === 0 && <div className='cart-no-items'>No items</div>}
         <div className="cart-box">
           <ul className="cart-list">
             {cart?.products.map((item: ICartItem) => (
