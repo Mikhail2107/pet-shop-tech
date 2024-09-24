@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 interface Cart {
   id: number;
   products: Product[];
@@ -8,6 +9,7 @@ interface Cart {
   totalProducts: number;
   totalQuantity: number;
 }
+
 interface Product {
   id: number;
   title: string;
@@ -18,10 +20,15 @@ interface Product {
   discountedTotal: number;
   thumbnail: string;
 }
+
 interface CartState {
-  cart: Cart; 
+  cart: Cart | null; 
   isLoading: boolean;
   error: string | null;
+}
+
+interface FetchCartPayload {
+  cart: Cart;
 }
 
 export const fetchCart = createAsyncThunk(
@@ -33,12 +40,13 @@ export const fetchCart = createAsyncThunk(
       throw new Error('Ошибка получения корзины');
     }
 
-    return await response.json();
+    const data: FetchCartPayload = await response.json();
+    return data;
   }
 );
 
 const initialState: CartState = {
-  cart: null,
+  cart: null, 
   isLoading: false,
   error: null,
 };
@@ -55,7 +63,7 @@ const cartSlice = createSlice({
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.cart = action.payload; 
+        state.cart = action.payload.cart; // Добавьте .cart для доступа к объекту Cart
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.isLoading = false;
@@ -67,4 +75,3 @@ const cartSlice = createSlice({
 export const {} = cartSlice.actions;
 
 export default cartSlice.reducer;
-
