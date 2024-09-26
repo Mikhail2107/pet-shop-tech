@@ -4,24 +4,23 @@ import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
 import { useEffect, useState } from 'react';
 import { fetchCart } from '../../entities/cart/cartSlice';
 import Button from '../../share/atom/Button/Button';
-import { useAppDispatch } from '../../hook/AppDispatch';
-import { AppSelector } from '../../hook/AppSelector';
+import { useAppDispatch} from '../../hook/AppDispatch';
+// import { AppSelector } from '../../hook/AppSele/ctor';
 
 import './Cart.css';
+import { useSelector } from 'react-redux';
 
 function Cart() {
   const dispatch = useAppDispatch();
-  const cart = AppSelector((state) => 
-    state.cart !== null && state.cart.cart ? state.cart.cart.carts : []
-  );
-  const [,setCount] = useState<number>(0);
+  const cart = useSelector(state => state.cart);
   const cartId:number = 6;
-
-
-  const { products } =cart[0];
+  console.log(cart.cart.products)
+  
   useEffect(() => {
     dispatch(fetchCart(cartId));
   }, [dispatch, cartId]);
+
+  const [,setCount] = useState<number>(0);
 
   const cartPrice = [
     { id: 0, titlePrice: 'Total count', priceCount: `${3} item`, classNameTitle: 'total-totalcount', classNamePrice: 'cart-total-item' },
@@ -47,10 +46,10 @@ function Cart() {
         </Helmet>
         
         <h2 className="cart-title">My Cart</h2>
-        {cart.length === 0 && <div className='cart-no-items'>No items</div>}
+        {cart.cart.products.length === 0 && <div className='cart-no-items'>No items</div>}
         <div className="cart-box">
           <ul className="cart-list">
-            {products.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
+            {cart.cart.products.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
               <li key={item.id} className={item.quantity === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   <img className='cart-image' src={item.thumbnail} alt="product-img" />
