@@ -11,10 +11,13 @@ import './Cart.css';
 function Cart() {
   const dispatch = useAppDispatch();
   const cart = AppSelector((state) => 
-    state.cart && state.cart.cart ? state.cart.cart.products : []
+    state.cart && state.cart.cart ? state.cart.cart.carts : []
   );
   const [count,setCount] = useState<number>(0);
   const cartId:number = 6;
+  const products = [{}];
+  Object.assign(products, cart);
+  console.log(products[0])
 
   useEffect(() => {
     dispatch(fetchCart(cartId));
@@ -47,7 +50,7 @@ function Cart() {
         {cart?.length === 0 && <div className='cart-no-items'>No items</div>}
         <div className="cart-box">
           <ul className="cart-list">
-            {cart?.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
+            {cart.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
               <li key={item.id} className={count === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   <img className='cart-image' src={item.thumbnail} alt="product-img" />

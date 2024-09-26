@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 interface Cart {
+  cart: any;
   id: number;
   products: Product[];
   total: number;
@@ -19,7 +20,7 @@ interface Product {
   thumbnail: string;
 }
 interface CartState {
-  cart: Cart | []; 
+  cart: Cart ; 
   isLoading: boolean;
   error: string | null;
 }
@@ -38,7 +39,7 @@ export const fetchCart = createAsyncThunk(
 );
 
 const initialState: CartState = {
-  cart: [],
+  cart: null,
   isLoading: false,
   error: null,
 };
@@ -55,12 +56,11 @@ const cartSlice = createSlice({
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.cart = action.payload.carts[0]; 
+        state.cart = action.payload; 
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || 'Ошибка загрузки корзины';
-        state.cart = [];
       });
   },
 });

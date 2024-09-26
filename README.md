@@ -1,5 +1,8 @@
 # pet-shop-tech
 Перейдите по ссылке на пет-проект
 
- https://pet-shop-tech-ujdq-84p9vsqtd-mikhail2107s-projects.vercel.app
+ атомы и модлекулы в папке share
+ в папке entities слайсы и api
+
+ проект задиплоить пока не получается, проблему устраняю
  
