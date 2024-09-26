@@ -12,7 +12,7 @@ import './Cart.css';
 function Cart() {
   const dispatch = useAppDispatch();
   const cart = AppSelector((state) => 
-    state.cart && state.cart.cart ? state.cart.cart.carts : []
+    state.cart !== null && state.cart.cart ? state.cart.cart.carts : []
   );
   const [,setCount] = useState<number>(0);
   const cartId:number = 6;
