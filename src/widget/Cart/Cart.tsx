@@ -8,17 +8,17 @@ import { useAppDispatch } from '../../hook/AppDispatch';
 import { AppSelector } from '../../hook/AppSelector';
 
 import './Cart.css';
+
 function Cart() {
   const dispatch = useAppDispatch();
   const cart = AppSelector((state) => 
     state.cart && state.cart.cart ? state.cart.cart.carts : []
   );
-  const [count,setCount] = useState<number>(0);
+  const [,setCount] = useState<number>(0);
   const cartId:number = 6;
-  const products = [{}];
-  Object.assign(products, cart);
-  console.log(products[0])
 
+
+  const { products } =cart[0];
   useEffect(() => {
     dispatch(fetchCart(cartId));
   }, [dispatch, cartId]);
@@ -35,7 +35,7 @@ function Cart() {
   const handleDecreaseCount = () => {
     setCount((prev: number) => prev - 1);
   };
-  console.log(cart)
+  
   // const handleDeleteItem = (itemId: number) => {
   //   setCount(count.filter(item => item.id !== itemId));
   // };  
@@ -47,11 +47,11 @@ function Cart() {
         </Helmet>
         
         <h2 className="cart-title">My Cart</h2>
-        {cart?.length === 0 && <div className='cart-no-items'>No items</div>}
+        {cart.length === 0 && <div className='cart-no-items'>No items</div>}
         <div className="cart-box">
           <ul className="cart-list">
-            {cart.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
-              <li key={item.id} className={count === 0 ? "cart-item cart-opacity" : "cart-item"}>
+            {products.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
+              <li key={item.id} className={item.quantity === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   <img className='cart-image' src={item.thumbnail} alt="product-img" />
                   <div className="cart-product">
@@ -60,7 +60,7 @@ function Cart() {
                     </Link>
                     <span className="cart-product-price">${item.price}</span>
                   </div>
-                  {count === 0 ? (
+                  {item.quantity === 0 ? (
                     <Button className='button-cart' bgImage={true}
                             onClick={() => handleIncreaseCount()}
                             ariaLabel={'Add to cart'}>
