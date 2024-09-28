@@ -8,7 +8,6 @@ export interface Product {
     title: string;
     total: number;
 }
-
 export interface Cart {
     discountedTotal: number;
     id: number;
@@ -18,11 +17,5 @@ export interface Cart {
     totalQuantity:  number;
     userId:  number;
     isLoading: boolean;
-    error: string | null;
-}
-
-export interface CartState {
-    items: Cart[];
-    isLoading: boolean;
-    error: string | null;
+    error: null;
 }
