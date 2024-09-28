@@ -5,11 +5,11 @@ import cartReducer from '../../cart/cartSlice';
 export const store = configureStore({
     reducer: {
         [productsApi.reducerPath]: productsApi.reducer, 
-        cart: cartReducer,
+        cartSlice: cartReducer,
     },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware().concat(productsApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof cartReducer>
+export type RootState = ReturnType<typeof store.getState>

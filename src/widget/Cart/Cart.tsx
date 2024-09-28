@@ -1,24 +1,30 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { fetchCart } from '../../entities/cart/cartSlice';
 import Button from '../../share/atom/Button/Button';
+import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
 import { useAppDispatch} from '../../hook/AppDispatch';
-// import { AppSelector } from '../../hook/AppSele/ctor';
+import { AppSelector } from '../../hook/AppSelector';
+import { Product } from '../../entities/cart/interface';
 
 import './Cart.css';
-import { useSelector } from 'react-redux';
 
 function Cart() {
   const dispatch = useAppDispatch();
-  const cart = useSelector(state => state.cart);
-  const cartId:number = 6;
-  console.log(cart.cart.products)
-  
-  useEffect(() => {
+  const cart = AppSelector(state => state.cartSlice.cart); 
+  const cartId: number = 6;
+  const fetchCartCallback = useCallback(() => {
     dispatch(fetchCart(cartId));
   }, [dispatch, cartId]);
+
+  useEffect(() => {
+    fetchCartCallback(); 
+  }, [fetchCartCallback]);
+
+    console.log(cart?.totalProducts); 
+ 
+  
 
   const [,setCount] = useState<number>(0);
 
@@ -46,10 +52,10 @@ function Cart() {
         </Helmet>
         
         <h2 className="cart-title">My Cart</h2>
-        {cart.cart.products.length === 0 && <div className='cart-no-items'>No items</div>}
-        <div className="cart-box">
+         {cart?.totalProducts === 0 ? (<div className='cart-no-items'>No items</div>):         
+        (<div className="cart-box">
           <ul className="cart-list">
-            {cart.cart.products.map((item: { id: number; thumbnail: string; title: string ; price: number; quantity: number; }) => (
+            {cart?.products.map((item: Product) => (
               <li key={item.id} className={item.quantity === 0 ? "cart-item cart-opacity" : "cart-item"}>
                 <div className="cart-product-info">
                   <img className='cart-image' src={item.thumbnail} alt="product-img" />
@@ -92,7 +98,7 @@ function Cart() {
               ))}
             </ul>
           </div>
-        </div>
+        </div>)}  
       </div>
     </>
   );
