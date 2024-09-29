@@ -1,0 +1,29 @@
+
+.input-style-panel {
+    display: flex;
+    width: 100%;
+    height: 62px;
+    margin: 20px 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: #B2B5BB;
+    border-radius: 4px;
+    background-color: #F6F6F6;
+    border: none;
+    padding: 0 20px; 
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.input-style {
+    width: 100%;
+    background-color: #F6F6F6;
+    border: none;
+    padding: 0;
+    margin: 0px 10px;
+}
+.input-style:focus {
+    outline: none;
+    font-weight: 400;
+    color: #444B58;
+}

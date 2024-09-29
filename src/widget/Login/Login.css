@@ -1,0 +1,31 @@
+.login-container {
+    max-width: 1180px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+.login-title {
+
+}
+.login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 430px;
+    border: 1px solid #B2B5BB;
+    border-radius: 4px;
+    padding:0 50px;
+    box-sizing: border-box;
+}
+
+.login-box-password {
+}
+.login-box-button {
+    width: 177px;
+    height: 62px;
+}
