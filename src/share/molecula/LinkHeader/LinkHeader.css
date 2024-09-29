@@ -1,0 +1,14 @@
+.header-list {
+    display: flex;
+    flex-direction:row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: end;
+    align-items: center;
+}
+
+.header-link {
+    text-decoration: none;
+    color:#FFFFFF;
+}
