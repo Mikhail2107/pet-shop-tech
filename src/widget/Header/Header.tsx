@@ -1,33 +1,34 @@
 import { NavLink } from 'react-router-dom'
 
 import './Header.css'
+import LinkHeader from '../../share/molecula/LinkHeader/LinkHeader';
 
-function Header(){
+interface HeaderLink {
+    href: string;
+    ariaLabel: string;
+    text: string;
+    className?: string; 
+    linkClassName?: string; 
+    spanText?: string;
+  }
+const Header = () => {
+    const headerLinks: HeaderLink[] = [
+      { href: '#catalog', ariaLabel: 'Go to catalog', text: 'Catalog' },
+      { href: '#faq', ariaLabel: 'Go to FAQ', text: 'FAQ', className: 'special-item' },
+      { href: '/cart', ariaLabel: 'Go to cart', text: 'Cart', className: 'item-cart', linkClassName: 'cart-link', spanText: "99+" },
+      { href: '#profile', ariaLabel: 'Go to user profile', text: 'Johnson Smith', className: 'item-username' },
+    ];
+  
     return (
-        <>
-        <header>            
-                <div className="header-menu" role="navigation" aria-label="Main navigation">
-                    <NavLink className="logo-company" to="/" aria-label="Company logo" >                        
-                    </NavLink>
-                    <ul className="header-list" role="list">
-                        <li className="header-item">
-                            <a className="header-link" href="#catalog" aria-label="Go to catalog">Catalog</a>
-                        </li>
-                        <li className="header-item">
-                            <a className="header-link" href="#faq" aria-label="Go to FAQ">FAQ</a>
-                        </li>
-                        <li className="header-item item-cart">
-                            <NavLink className="header-link" to="/cart" aria-label="Go to cart">Cart</NavLink>
-                            <span className="count-product" aria-label="Number of items in cart">99+</span>
-                        </li>
-                        <li className="header-item item-username">
-                            <NavLink className="header-link" to="#" aria-label="Go to user profile">Johnson Smith</NavLink>
-                        </li>
-                    </ul>
-                </div>       
-            </header>
-        </>
-    )
-}
-
-export default Header
+      <>
+        <header>
+          <div className="header-menu" role="navigation" aria-label="Main navigation">
+            <NavLink className="logo-company" to="/" aria-label="Company logo"></NavLink>
+            <LinkHeader links={headerLinks} />
+          </div>
+        </header>
+      </>
+    );
+  };
+  
+  export default Header;

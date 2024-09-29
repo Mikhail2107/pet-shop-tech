@@ -7,6 +7,7 @@ import ButtonControl from '../../share/molecula/ButtonControl/ButtonControl';
 import { useAppDispatch} from '../../hook/AppDispatch';
 import { AppSelector } from '../../hook/AppSelector';
 import { Product } from '../../entities/cart/interface';
+import Spiner from '../../share/spiner/spiner';
 
 import './Cart.css';
 
@@ -22,10 +23,9 @@ function Cart() {
     fetchCartCallback(); 
   }, [fetchCartCallback]);
 
-    console.log(cart?.totalProducts); 
- 
-  
-
+  if (cart?.isLoading) {
+    return <Spiner />
+  }
   const [,setCount] = useState<number>(0);
 
   const cartPrice = [
