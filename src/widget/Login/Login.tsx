@@ -1,24 +1,44 @@
-import React, { useState } from 'react'; 
+import { useState } from 'react';
+import { useLoginUserMutation } from '../../entities/user/userAuthApi'; 
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Button from '../../share/atom/Button/Button';
 import Input from '../../share/atom/Input/Input';
-import './Login.css';
+import Button from '../../share/atom/Button/Button';
+import Spiner from '../../share/spiner/spiner';
+import './Login.css'
 
 const Login = () => {
-  const [login, setLogin] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginUser, { isLoading, error }] = useLoginUserMutation();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Получаем значения логина и пароля
-    const loginValue = login;
-    const passwordValue = password;
-
-    // Отправляем запрос на сервер или выполняем другую логику аутентификации
-    console.log('Login:', loginValue, 'Password:', passwordValue); 
+    try {
+      loginUser({ username, password })
+        .unwrap()
+        .then((data) => {
+          console.log('Успешный вход:', data.id);
+          localStorage.setItem('user', JSON.stringify(data));
+          
+          navigate('/');
+        })
+        .catch((err) => {
+          console.error('Ошибка при входе:', err);
+        });
+    } catch (err) {
+      console.error('Ошибка при входе:', err);
+    }
   };
 
+  if (isLoading) {
+    return <Spiner />; 
+  }
+
+  //   username: 'oliviaw',
+//  password: 'oliviawpass',
+  
   return (
     <>
       <Helmet>
@@ -26,26 +46,30 @@ const Login = () => {
       </Helmet>
       <div className="login-container">
         <h2 className="login-title">Sign in</h2>
-        <form className="login-box" onSubmit={handleSubmit}> {/* Добавляем форму и обработчик onSubmit */}
+        
+        <form className="login-box" onSubmit={handleSubmit}> 
           <Input 
             areaLabel={'add Login'} 
             inputType={'text'} 
             className={'login-box-name'}
             placeHolder='Login'
-            value={login} // Добавляем value и onChange для управления состоянием
-            onChange={(e) => setLogin(e.target.value)} 
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} 
           />
           <Input 
             areaLabel={'Password'} 
             inputType={'password'} 
             placeHolder='Password'
             className='login-box-password'
-            value={password} // Добавляем value и onChange для управления состоянием
+            value={password} 
             onChange={(e) => setPassword(e.target.value)}
-          />                    
-          <Button ariaLabel={'Sign'} bgImage={false} className='login-box-button'>
+          />   
+          
+          <Button typeButton="submit" ariaLabel={'Sign'} bgImage={false} className='login-box-button'>
             Sign in
-          </Button>
+          </Button>                 
+          
+          {error && <div className="error">Ошибка</div>}
         </form>
       </div>
     </>
@@ -53,4 +77,3 @@ const Login = () => {
 };
 
 export default Login;
-

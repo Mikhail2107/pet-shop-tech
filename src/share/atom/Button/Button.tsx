@@ -7,11 +7,15 @@ interface IButtonProps {
     ariaLabel: string; 
     children?: React.ReactNode
     bgImage: boolean; 
+    typeButton?: "submit" | "reset" | "button" | undefined;
 }
 
-const Button: React.FC<IButtonProps> = ({ className, onClick, ariaLabel, children, bgImage }) => {
+const Button: React.FC<IButtonProps> = ({ className, onClick, ariaLabel, children, typeButton, bgImage }) => {
     return (
-        <button className={`${className } && button-style `} aria-label={ariaLabel} onClick={onClick}>
+        <button className={`${className } && button-style `} 
+                aria-label={ariaLabel} 
+                onClick={onClick}
+                type={typeButton}>
             {!bgImage && `${children}`}
         </button>
     );

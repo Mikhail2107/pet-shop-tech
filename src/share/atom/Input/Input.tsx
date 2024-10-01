@@ -6,7 +6,7 @@ interface IInputProps {
     inputType: string;
     placeHolder?: string;
     value?: string;
-    onChange?: () => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 function Input({areaLabel, inputType, placeHolder, className, value, onChange}:IInputProps){
     return (

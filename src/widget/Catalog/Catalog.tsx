@@ -9,12 +9,11 @@ import useDebounce from '../../hook/useDebounce';
 
 import './Catalog.css'
 
-
 function Catalog() {
     const [searchTerm, setSearchTerm] = useState('');
 		const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
-    const [currentPage] = useState(1); //setCurrentPage
+    const [currentPage] = useState(1);
     const [productsPerPage,setProductsPerPage] = useState(6);
     const { data: products, isLoading, error } = useGetProductsQuery({
         q: debouncedSearchTerm, 
@@ -22,7 +21,6 @@ function Catalog() {
         skip: (currentPage - 1) * productsPerPage,
       });
  
-    // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
      const handleSearch = (searchTerm: string) => {
        setSearchTerm(searchTerm);

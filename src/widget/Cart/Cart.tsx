@@ -14,15 +14,25 @@ import './Cart.css';
 function Cart() {
   const dispatch = useAppDispatch();
   const cart = AppSelector(state => state.cartSlice.cart); 
+  const [user, setUser] = useState(null);
   const cartId: number = 6;
   const fetchCartCallback = useCallback(() => {
-    dispatch(fetchCart(cartId));
-  }, [dispatch, cartId]);
+    dispatch(fetchCart(user?.id));
+  }, [dispatch, user?.id]);
 
   useEffect(() => {
     fetchCartCallback(); 
   }, [fetchCartCallback]);
-
+  
+  useEffect(() => {
+    
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []); 
+  
+  console.log(user?.id)
   if (cart?.isLoading) {
     return <Spiner />
   }
