@@ -29,3 +29,7 @@
     width: 177px;
     height: 62px;
 }
+
+.error {
+    color: red;
+}

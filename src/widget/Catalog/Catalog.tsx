@@ -1,11 +1,13 @@
 import { useGetProductsQuery } from "../../entities/product/productApi/productsApi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../../share/atom/Button/Button";
 import CatalogItem from "../CatalogItem/CatalogItem";
 import SearchInput from "../SearchInput/SearchInput";
 import Spiner from "../../share/spiner/spiner";
 import PageNotFound from "../../pages/PageNotFound";
 import useDebounce from '../../hook/useDebounce';
+import { useNavigate } from 'react-router-dom';
+
 
 import './Catalog.css'
 
@@ -20,7 +22,17 @@ function Catalog() {
         limit: productsPerPage,
         skip: (currentPage - 1) * productsPerPage,
       });
+    const navigate = useNavigate();
+    const [, setUser] = useState(null);
  
+      useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+        } else {
+          navigate('/login');
+        }
+      }, []);
 
      const handleSearch = (searchTerm: string) => {
        setSearchTerm(searchTerm);

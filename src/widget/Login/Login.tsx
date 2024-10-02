@@ -36,8 +36,8 @@ const Login = () => {
     return <Spiner />; 
   }
 
-  //   username: 'oliviaw',
-//  password: 'oliviawpass',
+  //   username: 'oliviaw', ethanm, madisonc
+//  password: 'oliviawpass', ethanmpass, madisoncpass
   
   return (
     <>
@@ -63,13 +63,11 @@ const Login = () => {
             className='login-box-password'
             value={password} 
             onChange={(e) => setPassword(e.target.value)}
-          />   
-          
+          />             
           <Button typeButton="submit" ariaLabel={'Sign'} bgImage={false} className='login-box-button'>
             Sign in
-          </Button>                 
-          
-          {error && <div className="error">Ошибка</div>}
+          </Button>      
+          {error && <div className="error" >Ошибка</div>}
         </form>
       </div>
     </>

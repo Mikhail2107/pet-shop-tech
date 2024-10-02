@@ -19,7 +19,7 @@
 }
 .cart-list {
     width: auto;
-    height: 70vh;
+    min-height: 70vh;
     list-style: none;    
     border: 1px solid gray;
     padding: 0;

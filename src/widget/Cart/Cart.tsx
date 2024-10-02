@@ -8,31 +8,28 @@ import { useAppDispatch} from '../../hook/AppDispatch';
 import { AppSelector } from '../../hook/AppSelector';
 import { Product } from '../../entities/cart/interface';
 import Spiner from '../../share/spiner/spiner';
+import { getUserFromLocalStorage } from '../../entities/user/auth';
+import { useNavigate } from 'react-router-dom';
 
 import './Cart.css';
 
 function Cart() {
   const dispatch = useAppDispatch();
   const cart = AppSelector(state => state.cartSlice.cart); 
-  const [user, setUser] = useState(null);
-  const cartId: number = 6;
-  const fetchCartCallback = useCallback(() => {
-    dispatch(fetchCart(user?.id));
-  }, [dispatch, user?.id]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchCartCallback(); 
-  }, [fetchCartCallback]);
-  
-  useEffect(() => {
-    
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const user = getUserFromLocalStorage();
+    if (user) {
+      console.log('ID пользователя:', user.id);
+      dispatch(fetchCart(15)); 
+    } else {
+      navigate('/login');
     }
-  }, []); 
-  
-  console.log(user?.id)
+  }, [dispatch, navigate]);
+
+
+
   if (cart?.isLoading) {
     return <Spiner />
   }
@@ -51,9 +48,9 @@ function Cart() {
     setCount((prev: number) => prev - 1);
   };
   
-  // const handleDeleteItem = (itemId: number) => {
-  //   setCount(count.filter(item => item.id !== itemId));
-  // };  
+  const handleDeleteItem = (itemId: number) => {
+    setCount(count.filter(item => item.id !== itemId));
+  };  
   return (
     <>
       <div className="cart-container">
@@ -93,7 +90,7 @@ function Cart() {
                   )}
                 </div>
                 <div className="cart-delete" 
-                    // onClick={() => handleDeleteItem(item.id)}
+                    onClick={() => handleDeleteItem(item.id)}
                     >Delete</div>
               </li>
             ))}
