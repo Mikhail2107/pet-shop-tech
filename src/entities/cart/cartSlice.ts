@@ -12,7 +12,7 @@ interface CartState {
   totalPrice: number;
   isLoading: boolean;
   error: string | null;
-  cartId: number | null; // Добавлен ID корзины
+  cartId: number | null; 
 }
 
 const initialState: CartState = {
@@ -22,7 +22,7 @@ const initialState: CartState = {
   totalPrice: 0,
   isLoading: false,
   error: null,
-  cartId: null, // Изначально ID корзины не известен
+  cartId: null, 
 };
 
 export const fetchCart = createAsyncThunk(
@@ -38,7 +38,6 @@ export const fetchCart = createAsyncThunk(
       const cartData = data.carts[0];
 
       if (!cartData) {
-        // Если корзина не найдена, создаем новую
         const createResponse = await fetch('https://dummyjson.com/carts/add', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

@@ -35,9 +35,6 @@ const Login = () => {
   if (isLoading) {
     return <Spiner />; 
   }
-
-  //   username: 'oliviaw', ethanm, madisonc
-//  password: 'oliviawpass', ethanmpass, madisoncpass, williamgpass
   
   return (
     <>

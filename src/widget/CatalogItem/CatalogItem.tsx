@@ -42,7 +42,6 @@ function CatalogItem({ id, price, title, images }: Product) {
     } 
   };
 
-
   const handleIncreaseCount = (productId: number) => {
     const updatedProducts = cart.products.map((product) => {
       if (product.id === productId) {
