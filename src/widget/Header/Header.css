@@ -4,6 +4,7 @@
     grid-template-columns:1fr 1fr;
     padding: 10px 100px;
     background-color: #484283;  
+    position: sticky;
 }
 .header-link:hover {
     color: gray;

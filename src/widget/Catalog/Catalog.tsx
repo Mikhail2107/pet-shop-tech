@@ -32,16 +32,15 @@ function Catalog() {
         } else {
           navigate('/login');
         }
-      }, []);
+      }, [navigate]);
 
      const handleSearch = (searchTerm: string) => {
        setSearchTerm(searchTerm);
      };
 
 		 const  handleShowMore = () => {
-			setProductsPerPage(prevPage => prevPage + 12)
+			setProductsPerPage(prevPage => prevPage + 22)
 		 }
-     
     if (isLoading) {
         return <Spiner />;
     }
@@ -57,7 +56,8 @@ function Catalog() {
             <ul className="product-list" role="list">                
 				{products && products.map((product) => (
 				<li key={product.id}>
-					<CatalogItem {...product}/>
+          
+					<CatalogItem {...product}/>          
 				</li> 
 			))}									                     
             </ul>

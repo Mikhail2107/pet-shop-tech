@@ -35,20 +35,7 @@ export const productsApi = createApi({
     
     getCart: builder.query({
       query: () => '/cart',
-    }),
-    // addToCart: builder.mutation({
-    //   query: (productId) => ({
-    //     url: '/cart/add',
-    //     method: 'POST',
-    //     body: { productId },
-    //   }),
-    // }),
-    // removeFromCart: builder.mutation({
-    //   query: (productId) => ({
-    //     url: `/cart/${productId}`,
-    //     method: 'DELETE',
-    //   }),
-    // }),    
+    }),     
   }),
 });
 
@@ -56,6 +43,4 @@ export const {
   useGetProductsQuery, 
   useGetProductByIdQuery,
   useGetCartQuery, 
-  // useAddToCartMutation, 
-  // useRemoveFromCartMutation, 
 } = productsApi;

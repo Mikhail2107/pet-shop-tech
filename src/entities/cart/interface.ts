@@ -1,12 +1,12 @@
 export interface Product {
     discountPercentage: number;
-    discountedTotal: number;
+    discountedTotal?: number;
     id:  number;
     price: number;
     quantity: number;
     thumbnail:string;
     title: string;
-    total: number;
+    total?: number;
 }
 export interface Cart {
     discountedTotal: number;

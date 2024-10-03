@@ -3,6 +3,13 @@
     font-size: 36px;
     color: #444B58;
 }
+.cart-no-items {
+    display: flex;
+    width: 100%;
+    min-height: 60vh;
+    justify-content: center;
+    align-items: start;
+}
 .cart-container {   
     justify-content: center;
     align-items: center;
