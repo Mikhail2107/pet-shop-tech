@@ -47,6 +47,8 @@ function Catalog() {
     if (error) {
         return <PageNotFound />;
       }
+
+      // console.log(products)
     return (
         <>
         <div className="catalog-container" id="catalog" role="region" aria-label="Catalog of products">

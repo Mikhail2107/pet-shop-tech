@@ -13,7 +13,7 @@ const [searchTerm, setSearchTerm] = useState('');
     setSearchTerm(e.target.value);
 		onSearch(e.target.value);
   };
-
+  
     return (
         <>
             <div className="search-panel" role="search" aria-label="Search">

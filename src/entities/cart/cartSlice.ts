@@ -94,7 +94,7 @@ export const updateCart = createAsyncThunk(
         method: 'PUT', 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          merge: true,
+          merge: false,
           products: products,
         }),
       });

@@ -1,15 +1,29 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useGetProductByIdQuery } from '../../entities/product/productApi/productsApi';
+import { useAppDispatch } from '../../hook/AppDispatch';
 import { Helmet } from 'react-helmet';
 import NotFound from '../NotFound/NotFound';
 import Button from '../../share/atom/Button/Button';
 import Spiner from "../../share/spiner/spiner";
 
 import './ProductPage.css';
+import { getUserFromLocalStorage } from '../../entities/user/auth';
+import { fetchCart } from '../../entities/cart/cartSlice';
 
 function ProductPage() {
   const { productId } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    const user = getUserFromLocalStorage();
+    if (user) {
+      dispatch(fetchCart(user.id));
+    } else {
+      navigate('/login');
+    }
+  }, [navigate]);
   
   if (productId === undefined) {
     return <NotFound />;
@@ -114,3 +128,5 @@ function ProductPage() {
 }
 
 export default ProductPage;
+
+

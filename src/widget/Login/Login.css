@@ -7,9 +7,6 @@
     align-items: center;
     margin: 0px auto;
 }
-.login-title {
-
-}
 .login-box {
     display: flex;
     flex-direction: column;
@@ -22,8 +19,8 @@
     padding:0 50px;
     box-sizing: border-box;
 }
-
-.login-box-password {
+.input-failed {
+    border: 1px solid red;
 }
 .login-box-button {
     width: 177px;
@@ -32,4 +29,11 @@
 
 .error {
     color: red;
+}
+.input-failed:focus {
+    border: 1px solid red;
+}
+.input-active:focus {
+    border: 1px solid green;
+
 }

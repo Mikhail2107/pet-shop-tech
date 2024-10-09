@@ -31,6 +31,7 @@ function Cart() {
     }
   }, [dispatch, navigate]);
 
+
   const handleIncreaseQuantity = (productId: number) => {
     const updatedProducts = cart.products.map((product) => {
       if (product.id === productId) {
@@ -53,8 +54,8 @@ function Cart() {
 
   const handleDeleteItem = (productId: number) => {
     const updatedProducts = cart.products.filter(
-      (product) => product.id !== productId
-    );
+      (product) => product.id !== productId);
+      console.log(updatedProducts)
     dispatch(updateCart({ products: updatedProducts })); 
   };
   if (cart.isLoading) {

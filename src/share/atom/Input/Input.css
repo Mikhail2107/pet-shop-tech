@@ -1,4 +1,11 @@
 
+/* .input-style-panel.input-failed {
+    border: 1px solid red;
+}
+.input-style-panel.input-active {
+    border: 1px solid green;
+
+} */
 .input-style-panel {
     display: flex;
     width: 100%;

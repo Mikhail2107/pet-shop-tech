@@ -9,27 +9,28 @@ import { updateCart } from '../../entities/cart/cartSlice';
 
 import './CatalogItem.css';
 
-function CatalogItem({ id, price, title, images }: Product) {
+function CatalogItem({ id, price, title, images, stock }: Product) {
   const dispatch = useAppDispatch();
   const cart = AppSelector((state) => state.cartSlice);
   const [quantityInCart, setQuantityInCart] = useState(0); 
 
   useEffect(() => {
-    const cartItem = cart.products.find((item) => item.id === id);
+    const cartItem = cart?.products.find((item) => item.id === id);
     if (cartItem) {
       setQuantityInCart(cartItem.quantity);
     }
   }, [cart.products, id]);
 
   const handleAddToCart = () => {
-    if (cart.cartId) { 
+    if (cart.cartId && stock) { 
       const existingProductIndex = cart.products.findIndex((item) => item.id === id);
-
+      stock = stock-1;
+      console.log(stock)
       let updatedProducts;
 
       if (existingProductIndex !== -1) {
         updatedProducts = cart.products.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === id && item.quantity <= stock ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
         updatedProducts = [
@@ -44,7 +45,8 @@ function CatalogItem({ id, price, title, images }: Product) {
 
   const handleIncreaseCount = (productId: number) => {
     const updatedProducts = cart.products.map((product) => {
-      if (product.id === productId) {
+      if (product.id === productId && stock !== 0) {
+        stock = stock -1;
         return { ...product, quantity: product.quantity + 1 };
       }
       return product;
@@ -57,7 +59,7 @@ function CatalogItem({ id, price, title, images }: Product) {
 
     let updatedProducts;
 
-    if (existingProductIndex !== -1 && cart.products[existingProductIndex].quantity > 1) {
+    if (existingProductIndex !== -1 && cart.products[existingProductIndex].quantity > 0) {
       updatedProducts = cart.products.map((item) =>
         item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
       );
